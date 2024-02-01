@@ -5,6 +5,7 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        # First check if len of each str is the same, if not can immediately return false
         if len(s) != len(t):
             return False
         
