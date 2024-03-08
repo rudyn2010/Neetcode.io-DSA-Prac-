@@ -2,7 +2,7 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self.lru = {}
-        self.stk = deque()
+        self.stack = deque()
         self.capacity = capacity
 
     def get(self, key: int) -> int:
@@ -15,8 +15,8 @@ class LRUCache:
         
         if key in self.lru:
             value = self.lru[key]
-            self.stk.remove(key)
-            self.stk.append(key)
+            self.stack.remove(key)
+            self.stack.append(key)
             return value
         
         else:
@@ -31,14 +31,14 @@ class LRUCache:
         """
 
         if key not in self.lru:
-            if len(self.stk) == self.capacity :
-                old = self.stk.popleft()
+            if len(self.stack) == self.capacity :
+                old = self.stack.popleft()
                 del self.lru[old]
         
         else:
-            self.stk.remove(key)
+            self.stack.remove(key)
             
-        self.stk.append(key)
+        self.stack.append(key)
         self.lru[key] = value
 
 
